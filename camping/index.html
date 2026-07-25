@@ -74,7 +74,16 @@ h1,h2,h3,h4{font-family:'Gabarito',system-ui,sans-serif;font-weight:700;line-hei
 
 /* ================= HERO ================= */
 .hero{position:relative;min-height:88svh;display:flex;align-items:flex-end;padding:6rem var(--pad) 0;color:var(--chalk);overflow:hidden;background:var(--pine)}
-.hero-bg{position:absolute;inset:0;z-index:0;background:#26372B url('https://picsum.photos/seed/pins-hero/2000/1300') center/cover no-repeat;transform:scale(1.05);animation:drift 28s ease-in-out infinite alternate}
+.hero-bg{position:absolute;inset:0;z-index:0;background:#26372B url("data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+<rect width="800" height="500" fill="%232A3D2F"/>
+<rect y="365" width="800" height="135" fill="%23202E24"/>
+<circle cx="660" cy="75" r="46" fill="%23C2673C" opacity="0.5"/>
+<g fill="%233C5445"><polygon points="80,120 58,340 102,340"/><polygon points="80,120 53,220 107,220"/><polygon points="80,120 64,160 96,160"/></g>
+<g fill="%2331463A"><polygon points="225,78 198,340 252,340"/><polygon points="225,78 192,200 258,200"/><polygon points="225,78 202,140 248,140"/></g>
+<g fill="%23263A2C"><polygon points="385,150 361,340 409,340"/><polygon points="385,150 356,250 414,250"/><polygon points="385,150 368,190 402,190"/></g>
+<g fill="%233C5445"><polygon points="565,88 533,340 597,340"/><polygon points="565,88 526,210 604,210"/><polygon points="565,88 540,150 590,150"/></g>
+<g fill="%2331463A"><polygon points="715,128 690,340 740,340"/><polygon points="715,128 686,240 744,240"/><polygon points="715,128 697,180 733,180"/></g>
+</svg>") center/cover no-repeat;transform:scale(1.05);animation:drift 28s ease-in-out infinite alternate}
 @keyframes drift{to{transform:scale(1.12) translate3d(-1.5%,-.9%,0)}}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(178deg,rgba(38,55,43,.5) 0%,rgba(38,55,43,.42) 34%,rgba(38,55,43,.93) 86%,var(--pine) 100%)}
 .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:2.2rem}
@@ -172,6 +181,20 @@ h1,h2,h3,h4{font-family:'Gabarito',system-ui,sans-serif;font-weight:700;line-hei
 .serv-card .meta{font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.06em;text-transform:uppercase;color:var(--clay);margin-top:.6rem;display:block}
 @media(max-width:980px){.serv-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.serv-grid{grid-template-columns:1fr}}
+
+
+/* ===== ILLUSTRATIONS DE NICHE (remplacent les photos en attendant les vraies) ===== */
+.pres-fig,.heb-card{position:relative}
+.pres-fig .niche-ill,.heb-card .niche-ill{aspect-ratio:4/5;display:block;background:linear-gradient(160deg,var(--pine-2),var(--pine));border-radius:4px}
+.heb-card .niche-ill{aspect-ratio:4/3;border-radius:0}
+.niche-ill svg{width:100%;height:100%;display:block}
+.niche-cap{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--ink-soft);margin-top:.8rem;letter-spacing:.04em}
+
+/* petites photos de galerie : simple bloc "<<Votre photo>>" */
+.gal-grid figure{background:linear-gradient(150deg,var(--pine-2),var(--pine));position:relative;overflow:hidden}
+.gal-grid .shot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:1rem}
+.gal-grid .shot::before{content:'';position:absolute;inset:0;opacity:.4;background:repeating-linear-gradient(135deg,rgba(244,242,233,.05) 0 10px,transparent 10px 20px)}
+.gal-grid .shot span{position:relative;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.05em;color:rgba(244,242,233,.55)}
 
 /* ================= GALERIE ================= */
 .gal{background:var(--pine);padding:clamp(3.5rem,7vw,6rem) 0}
@@ -289,7 +312,18 @@ footer{background:var(--pine);color:rgba(244,242,233,.45);padding:2.4rem var(--p
       </div>
     </div>
     <figure class="pres-fig rv d1">
-      <img src="https://picsum.photos/seed/pins-allee/1000/1250" alt="Allée ombragée du camping sous les pins" loading="lazy">
+      <div class="niche-ill"><svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+<rect width="400" height="500" fill="#31463A"/>
+<polygon points="0,500 160,180 240,180 400,500" fill="#26372B"/>
+<polygon points="80,500 175,240 225,240 320,500" fill="#3C5445" opacity="0.7"/>
+<g fill="#26372B">
+<polygon points="30,260 10,430 55,430"/><polygon points="30,260 15,360 50,360"/>
+<polygon points="370,260 350,430 395,430"/><polygon points="370,260 355,360 390,360"/>
+<polygon points="90,150 72,340 112,340"/><polygon points="90,150 78,250 106,250"/>
+<polygon points="310,150 292,340 332,340"/><polygon points="310,150 298,250 326,250"/>
+</g>
+<ellipse cx="200" cy="120" rx="90" ry="46" fill="#C2673C" opacity="0.28"/>
+</svg></div>
       <figcaption>L'allée centrale, sous les pins maritimes</figcaption>
     </figure>
   </div>
@@ -302,7 +336,16 @@ footer{background:var(--pine);color:rgba(244,242,233,.45);padding:2.4rem var(--p
   <p class="intro">Prix TTC pour 7 nuits, du samedi 16h au samedi 10h. Taxe de séjour et forfait ménage non inclus. Draps en option.</p>
   <div class="heb-grid">
     <article class="heb-card rv">
-      <img src="https://picsum.photos/seed/pins-mh4/800/600" alt="Mobil-home 4 places" loading="lazy">
+      <div class="niche-ill"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+<rect width="400" height="300" fill="#EDE6D3"/>
+<rect x="0" y="220" width="400" height="80" fill="#DDD3B8"/>
+<rect x="90" y="150" width="220" height="90" rx="4" fill="#3E8C93"/>
+<polygon points="76,150 200,105 324,150" fill="#A9552F"/>
+
+<rect x="176" y="190" width="48" height="50" rx="3" fill="#F4EFE1"/>
+<rect x="106" y="170" width="34" height="28" rx="2" fill="#F4EFE1" opacity="0.9"/>
+<rect x="260" y="170" width="34" height="28" rx="2" fill="#F4EFE1" opacity="0.9"/>
+</svg></div>
       <div class="heb-body">
         <h3>Mobil-home Pinède</h3>
         <div class="heb-specs"><span>4 pers.</span><span>2 chambres</span><span>24 m²</span><span>terrasse</span></div>
@@ -311,7 +354,16 @@ footer{background:var(--pine);color:rgba(244,242,233,.45);padding:2.4rem var(--p
       </div>
     </article>
     <article class="heb-card rv d1">
-      <img src="https://picsum.photos/seed/pins-mh6/800/600" alt="Mobil-home 6 places" loading="lazy">
+      <div class="niche-ill"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+<rect width="400" height="300" fill="#EDE6D3"/>
+<rect x="0" y="220" width="400" height="80" fill="#DDD3B8"/>
+<rect x="70" y="150" width="260" height="90" rx="4" fill="#31463A"/>
+<polygon points="56,150 200,105 344,150" fill="#8A431F"/>
+<rect x='46' y='150' width='308' height='14' rx='3' fill='#8A431F' opacity='0.85'/>
+<rect x="176" y="190" width="48" height="50" rx="3" fill="#F4EFE1"/>
+<rect x="86" y="170" width="34" height="28" rx="2" fill="#F4EFE1" opacity="0.9"/>
+<rect x="280" y="170" width="34" height="28" rx="2" fill="#F4EFE1" opacity="0.9"/>
+</svg></div>
       <div class="heb-body">
         <h3>Mobil-home Grand Large</h3>
         <div class="heb-specs"><span>6 pers.</span><span>3 chambres</span><span>32 m²</span><span>clim</span></div>
@@ -320,7 +372,14 @@ footer{background:var(--pine);color:rgba(244,242,233,.45);padding:2.4rem var(--p
       </div>
     </article>
     <article class="heb-card rv d2">
-      <img src="https://picsum.photos/seed/pins-tente/800/600" alt="Emplacement tente sous les pins" loading="lazy">
+      <div class="niche-ill"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+<rect width="400" height="300" fill="#EDE6D3"/>
+<rect x="0" y="220" width="400" height="80" fill="#DDD3B8"/>
+<polygon points="200,110 120,240 280,240" fill="#C2673C"/>
+<polygon points="200,110 165,240 235,240" fill="#A9552F"/>
+<line x1="200" y1="110" x2="200" y2="240" stroke="#8A431F" stroke-width="3"/>
+<circle cx="200" cy="105" r="5" fill="#3E8C93"/>
+</svg></div>
       <div class="heb-body">
         <h3>Emplacement tente</h3>
         <div class="heb-specs"><span>2 pers.</span><span>90 m²</span><span>ombragé</span><span>électricité</span></div>
@@ -329,7 +388,16 @@ footer{background:var(--pine);color:rgba(244,242,233,.45);padding:2.4rem var(--p
       </div>
     </article>
     <article class="heb-card rv d3">
-      <img src="https://picsum.photos/seed/pins-cc/800/600" alt="Emplacement camping-car" loading="lazy">
+      <div class="niche-ill"><svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+<rect width="400" height="300" fill="#EDE6D3"/>
+<rect x="0" y="220" width="400" height="80" fill="#DDD3B8"/>
+<rect x="90" y="150" width="220" height="70" rx="8" fill="#3E8C93"/>
+<rect x="90" y="150" width="70" height="70" rx="8" fill="#F4EFE1" opacity="0.92"/>
+<circle cx="140" cy="222" r="16" fill="#26372B"/>
+<circle cx="270" cy="222" r="16" fill="#26372B"/>
+<rect x="180" y="168" width="36" height="24" rx="2" fill="#31463A" opacity="0.6"/>
+<rect x="226" y="168" width="36" height="24" rx="2" fill="#31463A" opacity="0.6"/>
+</svg></div>
       <div class="heb-body">
         <h3>Emplacement camping-car</h3>
         <div class="heb-specs"><span>2 pers.</span><span>110 m²</span><span>plat</span><span>vidange</span></div>
@@ -476,14 +544,14 @@ footer{background:var(--pine);color:rgba(244,242,233,.45);padding:2.4rem var(--p
     <h2>Le camping en photos</h2>
   </div>
   <div class="gal-grid">
-    <figure class="gw rv"><img src="https://picsum.photos/seed/pins-g1/1200/700" alt="Vue générale du camping" loading="lazy"><figcaption>Vue générale</figcaption></figure>
-    <figure class="gt rv d1"><img src="https://picsum.photos/seed/pins-g2/700/1000" alt="Piscine chauffée" loading="lazy"><figcaption>La piscine</figcaption></figure>
-    <figure class="rv d2"><img src="https://picsum.photos/seed/pins-g3/700/700" alt="Intérieur d'un mobil-home" loading="lazy"><figcaption>Intérieur mobil-home</figcaption></figure>
-    <figure class="rv"><img src="https://picsum.photos/seed/pins-g4/700/700" alt="Terrasse d'un mobil-home" loading="lazy"><figcaption>Terrasse</figcaption></figure>
-    <figure class="rv d1"><img src="https://picsum.photos/seed/pins-g5/700/700" alt="Chemin vers la plage" loading="lazy"><figcaption>Chemin des dunes</figcaption></figure>
-    <figure class="gw rv d2"><img src="https://picsum.photos/seed/pins-g6/1200/700" alt="Plage de Boisvinet" loading="lazy"><figcaption>Plage de Boisvinet</figcaption></figure>
-    <figure class="rv"><img src="https://picsum.photos/seed/pins-g7/700/700" alt="Emplacement tente ombragé" loading="lazy"><figcaption>Emplacement ombragé</figcaption></figure>
-    <figure class="rv d1"><img src="https://picsum.photos/seed/pins-g8/700/700" alt="Soirée moules-frites" loading="lazy"><figcaption>Soirée du vendredi</figcaption></figure>
+    <figure class="gw rv"><div class="shot"><span>&lt;&lt;Votre photo&gt;&gt;</span></div><figcaption>Vue générale</figcaption></figure>
+    <figure class="gt rv d1"><div class="shot"><span>&lt;&lt;Votre photo&gt;&gt;</span></div><figcaption>La piscine</figcaption></figure>
+    <figure class="rv d2"><div class="shot"><span>&lt;&lt;Votre photo&gt;&gt;</span></div><figcaption>Intérieur mobil-home</figcaption></figure>
+    <figure class="rv"><div class="shot"><span>&lt;&lt;Votre photo&gt;&gt;</span></div><figcaption>Terrasse</figcaption></figure>
+    <figure class="rv d1"><div class="shot"><span>&lt;&lt;Votre photo&gt;&gt;</span></div><figcaption>Chemin des dunes</figcaption></figure>
+    <figure class="gw rv d2"><div class="shot"><span>&lt;&lt;Votre photo&gt;&gt;</span></div><figcaption>Plage de Boisvinet</figcaption></figure>
+    <figure class="rv"><div class="shot"><span>&lt;&lt;Votre photo&gt;&gt;</span></div><figcaption>Emplacement ombragé</figcaption></figure>
+    <figure class="rv d1"><div class="shot"><span>&lt;&lt;Votre photo&gt;&gt;</span></div><figcaption>Soirée du vendredi</figcaption></figure>
   </div>
 </section>
 
