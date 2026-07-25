@@ -97,7 +97,7 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
 }
 .hero-bg{
   position:absolute;inset:0;z-index:0;
-  background:#0E2027 url('https://picsum.photos/seed/criee-hero/2000/1300') center/cover no-repeat;
+  background:#0E2027;background-image:radial-gradient(115% 85% at 82% 8%,rgba(223,201,160,.16),transparent 60%),radial-gradient(90% 70% at 8% 95%,rgba(46,107,107,.20),transparent 60%),repeating-linear-gradient(115deg,rgba(241,237,226,.035) 0 1px,transparent 1px 48px),repeating-linear-gradient(25deg,rgba(241,237,226,.035) 0 1px,transparent 1px 48px);
   transform:scale(1.06);animation:drift 24s ease-in-out infinite alternate;
 }
 @keyframes drift{to{transform:scale(1.13) translate3d(-1.5%,-1%,0);}}
@@ -205,6 +205,16 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:
 .dish.sold .dish-price{text-decoration:line-through;}
 
 /* ============ GALLERY ============ */
+/* ===== EMPLACEMENTS PHOTO (a remplacer par les vraies photos du client) ===== */
+.story-fig .shot-wrap{aspect-ratio:4/5;border-radius:2px;background:linear-gradient(150deg,var(--hull),var(--abyss));position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;text-align:center;padding:1.2rem}
+.gal-grid figure{background:linear-gradient(150deg,var(--hull),var(--abyss));position:relative;overflow:hidden}
+.gal-grid figure .shot-wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;text-align:center;padding:1rem}
+.shot-wrap::before{content:'';position:absolute;inset:0;opacity:.45;background:repeating-linear-gradient(135deg,rgba(241,237,226,.05) 0 10px,transparent 10px 20px)}
+.shot-mark{position:relative;width:34px;height:26px;border:1.5px solid rgba(223,201,160,.6);border-radius:3px;flex-shrink:0}
+.shot-mark::before{content:'';position:absolute;left:4px;right:4px;bottom:4px;height:9px;border-radius:2px;background:rgba(192,71,47,.55);clip-path:polygon(0 100%,32% 34%,54% 68%,72% 44%,100% 100%)}
+.shot-mark::after{content:'';position:absolute;top:5px;right:6px;width:5px;height:5px;border-radius:50%;background:rgba(223,201,160,.7)}
+.shot-txt{position:relative;font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(241,237,226,.4);line-height:1.6}
+
 .gallery{background:var(--abyss);padding:0 0 clamp(4rem,8vw,7rem);}
 .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:min(21vw,215px);gap:6px;padding:0 var(--pad);}
 .gal-grid figure{overflow:hidden;border-radius:2px;background:var(--hull);}
@@ -348,7 +358,7 @@ footer .brand{font-size:1rem;}
       </blockquote>
     </div>
     <figure class="story-fig rv d1">
-      <img src="https://picsum.photos/seed/criee-peche/1000/1250" alt="Poissons frais préparés en cuisine" loading="lazy">
+      <div class="shot-wrap"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div>
       <figcaption>Retour de criée — 07h15, quai de la Cabaude</figcaption>
     </figure>
   </div>
@@ -440,14 +450,14 @@ footer .brand{font-size:1rem;}
 <!-- ============ GALERIE ============ -->
 <section class="gallery" aria-label="Galerie">
   <div class="gal-grid">
-    <figure class="g-wide rv"><img src="https://picsum.photos/seed/criee-g1/1200/700" alt="Plateau de fruits de mer" loading="lazy"></figure>
-    <figure class="g-tall rv d1"><img src="https://picsum.photos/seed/criee-g2/700/1000" alt="Salle du restaurant" loading="lazy"></figure>
-    <figure class="rv d2"><img src="https://picsum.photos/seed/criee-g3/700/700" alt="Bateaux de pêche au port" loading="lazy"></figure>
-    <figure class="rv"><img src="https://picsum.photos/seed/criee-g4/700/700" alt="Poisson grillé dressé à l'assiette" loading="lazy"></figure>
-    <figure class="rv d1"><img src="https://picsum.photos/seed/criee-g5/700/700" alt="Ambiance de la salle le soir" loading="lazy"></figure>
-    <figure class="g-wide rv d2"><img src="https://picsum.photos/seed/criee-g6/1200/700" alt="Fruits de mer sur glace" loading="lazy"></figure>
-    <figure class="rv"><img src="https://picsum.photos/seed/criee-g7/700/700" alt="Table dressée" loading="lazy"></figure>
-    <figure class="rv d1"><img src="https://picsum.photos/seed/criee-g8/700/700" alt="Plat du jour" loading="lazy"></figure>
+    <figure class="g-wide rv"><div class="shot-wrap"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div></figure>
+    <figure class="g-tall rv d1"><div class="shot-wrap"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div></figure>
+    <figure class="rv d2"><div class="shot-wrap"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div></figure>
+    <figure class="rv"><div class="shot-wrap"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div></figure>
+    <figure class="rv d1"><div class="shot-wrap"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div></figure>
+    <figure class="g-wide rv d2"><div class="shot-wrap"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div></figure>
+    <figure class="rv"><div class="shot-wrap"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div></figure>
+    <figure class="rv d1"><div class="shot-wrap"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div></figure>
   </div>
 </section>
 
