@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Criée du Marais — Restaurant de fruits de mer · Jard-sur-Mer, Vendée</title>
+<meta name="description" content="Restaurant de fruits de mer à Jard-sur-Mer. La carte suit la pêche du jour, débarquée le matin même aux Sables-d'Olonne. Terrasse, réservation par téléphone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,500&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --abyss:#0E2027;
+  --hull:#16303A;
+  --tide:#2E6B6B;
+  --sand:#DFC9A0;
+  --buoy:#C0472F;
+  --chart:#F1EDE2;
+  --chart-warm:#E7E1D2;
+  --ink:#1B2A2E;
+  --ink-soft:#55676C;
+  --rule:rgba(241,237,226,0.14);
+  --rule-dark:rgba(27,42,46,0.14);
+  --pad:clamp(1.5rem, 6vw, 7rem);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  font-family:'Instrument Sans',system-ui,sans-serif;
+  background:var(--chart);color:var(--ink);
+  line-height:1.62;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-0.015em;line-height:1.08;}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace;}
+:focus-visible{outline:2.5px solid var(--buoy);outline-offset:3px;border-radius:2px;}
+::selection{background:var(--sand);color:var(--abyss);}
+
+/* ============ REVEAL ============ */
+.rv{transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1);} .rv-pre{opacity:0;transform:translateY(24px);}
+.rv.in{opacity:1;transform:none;}
+.rv.d1{transition-delay:.09s}.rv.d2{transition-delay:.18s}.rv.d3{transition-delay:.27s}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}
+  .rv{opacity:1;transform:none;}
+}
+
+/* ============ TYPE HELPERS ============ */
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.18em;
+  text-transform:uppercase;display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1.1rem;
+}
+.eyebrow::before{content:'';width:22px;height:1px;background:currentColor;opacity:.55;}
+.lede{font-size:clamp(1rem,1.6vw,1.12rem);color:var(--ink-soft);max-width:52ch;}
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:90;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.3rem var(--pad);
+  transition:background .4s ease,padding .4s ease,box-shadow .4s ease;
+}
+.nav::before{
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to bottom,rgba(14,32,39,.78),rgba(14,32,39,0));
+  transition:opacity .4s ease;
+}
+.nav.stuck{background:var(--abyss);padding:.85rem var(--pad);box-shadow:0 1px 0 var(--rule);}
+.nav.stuck::before{opacity:0;}
+.brand{font-family:'Fraunces',serif;font-size:1.18rem;color:var(--chart);font-weight:600;line-height:1.1;}
+.brand i{font-style:italic;font-weight:300;color:var(--sand);}
+.nav ul{display:flex;gap:2rem;align-items:center;list-style:none;}
+.nav ul a{
+  color:var(--chart);font-size:.86rem;font-weight:500;letter-spacing:.01em;
+  position:relative;padding-block:.3rem;
+}
+.nav ul a::after{
+  content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--sand);
+  transition:width .3s cubic-bezier(.22,.61,.36,1);
+}
+.nav ul a:hover::after{width:100%;}
+.nav .book{
+  background:var(--buoy);color:var(--chart);padding:.62rem 1.15rem;border-radius:2px;font-weight:600;
+  transition:background .25s ease,transform .25s ease;
+}
+.nav .book::after{display:none;}
+.nav .book:hover{background:#D2543B;transform:translateY(-1px);}
+@media(max-width:880px){.nav ul li:not(.keep){display:none;}}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:flex-end;
+  padding:8rem var(--pad) 0;color:var(--chart);overflow:hidden;background:var(--abyss);
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:#0E2027 url('https://picsum.photos/seed/criee-hero/2000/1300') center/cover no-repeat;
+  transform:scale(1.06);animation:drift 24s ease-in-out infinite alternate;
+}
+@keyframes drift{to{transform:scale(1.13) translate3d(-1.5%,-1%,0);}}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(178deg,rgba(14,32,39,.55) 0%,rgba(14,32,39,.42) 38%,rgba(14,32,39,.93) 88%,var(--abyss) 100%);
+}
+.hero-inner{position:relative;z-index:2;width:100%;padding-bottom:2.5rem;}
+.hero .eyebrow{color:var(--sand);}
+.hero h1{
+  font-size:clamp(2.9rem,8.2vw,6.4rem);max-width:15ch;margin-bottom:1.4rem;
+  font-weight:600;letter-spacing:-0.03em;
+}
+.hero h1 i{font-style:italic;font-weight:300;color:var(--sand);}
+.hero p{color:rgba(241,237,226,.82);max-width:44ch;font-size:1.06rem;margin-bottom:2.1rem;}
+.hero-cta{display:flex;gap:.85rem;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;padding:.95rem 1.7rem;border-radius:2px;
+  font-weight:600;font-size:.94rem;border:1px solid transparent;
+  transition:background .25s ease,transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.btn-solid{background:var(--buoy);color:var(--chart);}
+.btn-solid:hover{background:#D2543B;transform:translateY(-2px);box-shadow:0 10px 26px -10px rgba(192,71,47,.75);}
+.btn-line{border-color:rgba(241,237,226,.38);color:var(--chart);}
+.btn-line:hover{background:rgba(241,237,226,.09);border-color:rgba(241,237,226,.6);}
+.btn-dark{background:var(--abyss);color:var(--chart);}
+.btn-dark:hover{background:var(--hull);transform:translateY(-2px);}
+
+/* tide gauge — signature detail */
+.gauge{
+  position:relative;z-index:2;display:flex;gap:clamp(1.2rem,4vw,3.2rem);
+  border-top:1px solid rgba(241,237,226,.18);padding:1.15rem 0 1.6rem;flex-wrap:wrap;
+}
+.gauge div{display:flex;flex-direction:column;gap:.15rem;}
+.gauge dt{font-family:'IBM Plex Mono',monospace;font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(241,237,226,.5);}
+.gauge dd{font-family:'IBM Plex Mono',monospace;font-size:.9rem;color:var(--sand);}
+.live{display:inline-flex;align-items:center;gap:.4rem;}
+.live::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--buoy);animation:pulse 2.4s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+/* ============ TICKER ============ */
+.ticker{background:var(--sand);color:var(--abyss);overflow:hidden;padding:.62rem 0;border-block:1px solid rgba(14,32,39,.12);}
+.ticker-track{display:flex;gap:0;width:max-content;animation:slide 42s linear infinite;}
+@keyframes slide{to{transform:translateX(-50%);}}
+.ticker span{
+  font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.06em;
+  padding:0 1.6rem;white-space:nowrap;text-transform:uppercase;
+}
+.ticker span::after{content:'◦';margin-left:1.6rem;opacity:.4;}
+
+/* ============ STORY ============ */
+.story{padding:clamp(4.5rem,9vw,8rem) var(--pad);background:var(--chart);}
+.story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,6vw,5rem);align-items:center;}
+.story .eyebrow{color:var(--buoy);}
+.story h2{font-size:clamp(1.85rem,3.6vw,2.9rem);margin-bottom:1.3rem;max-width:17ch;color:var(--abyss);}
+.story p+p{margin-top:.95rem;}
+.pull{
+  margin-top:2rem;padding-left:1.4rem;border-left:2px solid var(--buoy);
+  font-family:'Fraunces',serif;font-style:italic;font-size:1.22rem;line-height:1.42;color:var(--abyss);max-width:34ch;
+}
+.pull cite{display:block;font-family:'IBM Plex Mono',monospace;font-style:normal;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-top:.75rem;}
+.story-fig{position:relative;}
+.story-fig img{aspect-ratio:4/5;object-fit:cover;border-radius:2px;background:var(--chart-warm);}
+.story-fig figcaption{
+  font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--ink-soft);
+  margin-top:.8rem;letter-spacing:.04em;
+}
+@media(max-width:880px){.story-grid{grid-template-columns:1fr;}.story-fig{order:-1;}}
+
+/* ============ CARTE / CRIÉE BOARD ============ */
+.board{background:var(--abyss);color:var(--chart);padding:clamp(4.5rem,9vw,8rem) var(--pad);}
+.board-head{max-width:60ch;margin-bottom:3rem;}
+.board-head .eyebrow{color:var(--sand);}
+.board-head h2{font-size:clamp(1.9rem,4vw,3.1rem);margin-bottom:1rem;}
+.board-head p{color:rgba(241,237,226,.62);max-width:50ch;}
+.board-strip{
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
+  border:1px solid var(--rule);border-radius:2px;padding:.85rem 1.1rem;margin-bottom:2.6rem;
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.08em;
+  text-transform:uppercase;color:rgba(241,237,226,.55);
+}
+.board-strip b{color:var(--sand);font-weight:500;}
+.cat{margin-bottom:3rem;}
+.cat:last-child{margin-bottom:0;}
+.cat > h3{
+  font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--tide);padding-bottom:.7rem;border-bottom:1px solid var(--rule);margin-bottom:.4rem;font-weight:500;
+}
+.dish{
+  display:grid;grid-template-columns:1fr auto;gap:.4rem 1.8rem;align-items:baseline;
+  padding:1.15rem 0;border-bottom:1px solid var(--rule);
+  transition:padding-left .3s cubic-bezier(.22,.61,.36,1);
+}
+.dish:hover{padding-left:.7rem;}
+.dish-name{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:500;color:var(--chart);}
+.dish-desc{grid-column:1/2;font-size:.87rem;color:rgba(241,237,226,.5);max-width:52ch;}
+.dish-price{font-family:'IBM Plex Mono',monospace;font-size:1rem;color:var(--sand);white-space:nowrap;}
+.tag{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.08em;
+  text-transform:uppercase;padding:.16rem .5rem;border-radius:2px;margin-left:.55rem;vertical-align:.14em;
+}
+.tag-catch{background:var(--buoy);color:var(--chart);}
+.tag-out{border:1px solid rgba(241,237,226,.28);color:rgba(241,237,226,.45);}
+.dish.sold .dish-name,.dish.sold .dish-price{opacity:.42;}
+.dish.sold .dish-price{text-decoration:line-through;}
+
+/* ============ GALLERY ============ */
+.gallery{background:var(--abyss);padding:0 0 clamp(4rem,8vw,7rem);}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:min(21vw,215px);gap:6px;padding:0 var(--pad);}
+.gal-grid figure{overflow:hidden;border-radius:2px;background:var(--hull);}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.22,.61,.36,1),filter .5s ease;filter:saturate(.92);}
+.gal-grid figure:hover img{transform:scale(1.06);filter:saturate(1.05);}
+.g-tall{grid-row:span 2;}
+.g-wide{grid-column:span 2;}
+@media(max-width:880px){
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:min(38vw,190px);}
+  .g-wide{grid-column:span 2;}
+  .g-tall{grid-row:span 1;}
+}
+
+/* ============ AVIS ============ */
+.reviews{padding:clamp(4.5rem,9vw,8rem) var(--pad);background:var(--chart-warm);}
+.rev-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:2.8rem;}
+.rev-head .eyebrow{color:var(--buoy);}
+.rev-head h2{font-size:clamp(1.8rem,3.4vw,2.7rem);color:var(--abyss);max-width:16ch;}
+.rev-score{text-align:right;}
+.rev-score b{font-family:'Fraunces',serif;font-size:2.6rem;color:var(--abyss);font-weight:600;line-height:1;}
+.rev-score span{display:block;font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:.35rem;}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.rev-card{
+  background:var(--chart);border:1px solid var(--rule-dark);border-radius:3px;padding:1.9rem 1.6rem;
+  display:flex;flex-direction:column;gap:1rem;
+  transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s ease;
+}
+.rev-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px -22px rgba(14,32,39,.5);}
+.stars{color:var(--buoy);font-size:.9rem;letter-spacing:.14em;}
+.rev-card blockquote{font-family:'Fraunces',serif;font-size:1.03rem;line-height:1.5;color:var(--abyss);}
+.rev-who{display:flex;align-items:center;gap:.7rem;margin-top:auto;padding-top:.4rem;}
+.avatar{
+  width:34px;height:34px;border-radius:50%;background:var(--tide);color:var(--chart);
+  display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:.78rem;flex-shrink:0;
+}
+.rev-who p{font-size:.85rem;font-weight:600;color:var(--abyss);line-height:1.25;}
+.rev-who small{font-family:'IBM Plex Mono',monospace;font-size:.66rem;color:var(--ink-soft);letter-spacing:.05em;}
+@media(max-width:880px){.rev-grid{grid-template-columns:1fr;}.rev-score{text-align:left;}}
+
+/* ============ CARTE MARINE / INFOS ============ */
+.locate{background:var(--hull);color:var(--chart);padding:clamp(4.5rem,9vw,8rem) var(--pad);}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+.locate .eyebrow{color:var(--sand);}
+.locate h2{font-size:clamp(1.8rem,3.4vw,2.7rem);margin-bottom:1.2rem;max-width:15ch;}
+.info-list{list-style:none;margin-top:1.6rem;}
+.info-list li{display:flex;gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--rule);font-size:.95rem;align-items:baseline;}
+.info-list dt,.info-list .k{
+  font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--sand);width:104px;flex-shrink:0;
+}
+.info-list .v{color:rgba(241,237,226,.88);}
+.map-card{border:1px solid var(--rule);border-radius:3px;overflow:hidden;background:var(--abyss);}
+.map-card svg{display:block;width:100%;height:auto;}
+.map-foot{
+  display:flex;justify-content:space-between;gap:1rem;padding:.7rem 1rem;border-top:1px solid var(--rule);
+  font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.09em;text-transform:uppercase;color:rgba(241,237,226,.45);
+}
+@media(max-width:880px){.loc-grid{grid-template-columns:1fr;}}
+
+/* ============ RESERVATION ============ */
+.book-band{
+  background:var(--sand);color:var(--abyss);padding:clamp(3.5rem,7vw,6rem) var(--pad);
+  display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap;
+}
+.book-band h2{font-size:clamp(1.7rem,3.4vw,2.6rem);max-width:16ch;}
+.book-band p{margin-top:.7rem;color:rgba(14,32,39,.68);max-width:38ch;font-size:.98rem;}
+
+/* ============ FOOTER ============ */
+footer{background:var(--abyss);color:rgba(241,237,226,.45);padding:2.6rem var(--pad);
+  display:flex;justify-content:space-between;gap:1.2rem;flex-wrap:wrap;font-size:.83rem;align-items:center;}
+footer .brand{font-size:1rem;}
+
+/* ============ BANDEAU DEMO (discret) ============ */
+.demo{
+  position:fixed;right:1rem;bottom:1rem;z-index:120;
+  display:flex;align-items:center;gap:.55rem;
+  background:rgba(14,32,39,.9);color:rgba(241,237,226,.92);
+  border:1px solid rgba(223,201,160,.32);border-radius:100px;
+  padding:.5rem .95rem;font-family:'IBM Plex Mono',monospace;font-size:.66rem;
+  letter-spacing:.07em;text-transform:uppercase;backdrop-filter:blur(8px);
+  box-shadow:0 8px 24px -12px rgba(0,0,0,.6);
+}
+.demo::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--sand);flex-shrink:0;}
+@media(max-width:520px){.demo{font-size:.6rem;padding:.45rem .8rem;left:1rem;right:1rem;justify-content:center;}}
+</style>
+</head>
+<body>
+
+<div class="demo">Site de démonstration</div>
+
+<nav class="nav" id="nav">
+  <a href="#top" class="brand">La Criée <i>du Marais</i></a>
+  <ul>
+    <li><a href="#maison">La maison</a></li>
+    <li><a href="#carte">La carte</a></li>
+    <li><a href="#avis">Avis</a></li>
+    <li><a href="#venir">Nous trouver</a></li>
+    <li class="keep"><a href="tel:+33251000000" class="book">Réserver</a></li>
+  </ul>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="eyebrow">Jard-sur-Mer · Vendée · depuis 1998</p>
+    <h1>Débarqué ce matin, <i>servi ce soir</i></h1>
+    <p>La carte n'est pas imprimée à l'année. Elle est écrite chaque jour, après la criée, avec ce que les bateaux ont réellement ramené.</p>
+    <div class="hero-cta">
+      <a href="tel:+33251000000" class="btn btn-solid">Réserver une table</a>
+      <a href="#carte" class="btn btn-line">Voir la carte du jour</a>
+    </div>
+    <dl class="gauge">
+      <div><dt>Service ce soir</dt><dd class="live">19h00 — 22h30</dd></div>
+      <div><dt>Arrivage</dt><dd>Sables-d'Olonne, 06h40</dd></div>
+      <div><dt>Terrasse</dt><dd>Ouverte · 34 couverts</dd></div>
+      <div><dt>Réservation</dt><dd>02 51 00 00 00</dd></div>
+    </dl>
+  </div>
+</header>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker" aria-label="Arrivage du jour">
+  <div class="ticker-track">
+    <span>Bar de ligne — 4,2 kg</span><span>Sole — criée 06h40</span><span>Huîtres de la Guittière n°3</span><span>Langoustines vivantes</span><span>Moules de bouchot</span><span>Turbot — 2 pièces</span><span>Palourdes grises</span>
+    <span>Bar de ligne — 4,2 kg</span><span>Sole — criée 06h40</span><span>Huîtres de la Guittière n°3</span><span>Langoustines vivantes</span><span>Moules de bouchot</span><span>Turbot — 2 pièces</span><span>Palourdes grises</span>
+  </div>
+</div>
+
+<!-- ============ STORY ============ -->
+<section class="story" id="maison">
+  <div class="story-grid">
+    <div class="rv">
+      <p class="eyebrow">La maison</p>
+      <h2>Une carte qui suit la pêche, pas l'inverse</h2>
+      <p class="lede">Chaque matin, Damien passe à la criée des Sables-d'Olonne. Ce qu'il rapporte décide du menu du soir — pas le contraire. C'est pour ça que certains plats disparaissent de l'ardoise à 21h.</p>
+      <p class="lede">Pas de surgelé, pas de carte figée. Une cuisine simple, faite pour le produit : cuissons courtes, beurre, herbes du jardin, et rien qui vienne masquer le goût de la mer.</p>
+      <blockquote class="pull">
+        Si je n'ai pas trouvé de sole correcte le matin, il n'y a pas de sole le soir. C'est aussi bête que ça.
+        <cite>Damien Rousseau · chef</cite>
+      </blockquote>
+    </div>
+    <figure class="story-fig rv d1">
+      <img src="https://picsum.photos/seed/criee-peche/1000/1250" alt="Poissons frais préparés en cuisine" loading="lazy">
+      <figcaption>Retour de criée — 07h15, quai de la Cabaude</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ CARTE ============ -->
+<section class="board" id="carte">
+  <div class="board-head rv">
+    <p class="eyebrow">La carte</p>
+    <h2>Le tableau du jour</h2>
+    <p>Mis à jour chaque matin après la criée. Les plats barrés sont épuisés — c'est le principe.</p>
+  </div>
+
+  <div class="board-strip rv d1">
+    <span>Criée du <b>samedi 25 juillet</b></span>
+    <span>Arrivage <b>06h40</b> · Sables-d'Olonne</span>
+    <span>Menu enfant <b>12 €</b></span>
+    <span>Service <b>12h–14h30 / 19h–22h30</b></span>
+  </div>
+
+  <div class="cat rv">
+    <h3>Entrées</h3>
+    <article class="dish">
+      <span class="dish-name">Huîtres de la Guittière n°3<span class="tag tag-catch">Bassin voisin</span></span>
+      <span class="dish-price">12 € / 6 pièces</span>
+      <p class="dish-desc">Ouvertes à la commande, pain de seigle, beurre demi-sel.</p>
+    </article>
+    <article class="dish">
+      <span class="dish-name">Rillettes de maquereau fumé</span>
+      <span class="dish-price">9 €</span>
+      <p class="dish-desc">Fumé maison, citron confit, toasts grillés.</p>
+    </article>
+    <article class="dish sold">
+      <span class="dish-name">Bulots mayonnaise<span class="tag tag-out">Épuisé</span></span>
+      <span class="dish-price">10 €</span>
+      <p class="dish-desc">Cuisson court-bouillon, mayonnaise maison.</p>
+    </article>
+  </div>
+
+  <div class="cat rv">
+    <h3>Plats</h3>
+    <article class="dish">
+      <span class="dish-name">Plateau de fruits de mer « Marais »<span class="tag tag-catch">Pêche du jour</span></span>
+      <span class="dish-price">44 € / 2 pers.</span>
+      <p class="dish-desc">Huîtres, bulots, crevettes roses, langoustines, palourdes, demi-tourteau.</p>
+    </article>
+    <article class="dish">
+      <span class="dish-name">Bar de ligne rôti, beurre blanc<span class="tag tag-catch">4,2 kg ce matin</span></span>
+      <span class="dish-price">28 €</span>
+      <p class="dish-desc">Écrasé de pommes de terre à l'huile d'olive, jus de cuisson.</p>
+    </article>
+    <article class="dish">
+      <span class="dish-name">Sole meunière</span>
+      <span class="dish-price">26 €</span>
+      <p class="dish-desc">Beurre noisette, grenailles, légumes du marché.</p>
+    </article>
+    <article class="dish">
+      <span class="dish-name">Moules de bouchot marinière</span>
+      <span class="dish-price">18 €</span>
+      <p class="dish-desc">Servies en cocotte, frites maison coupées le matin.</p>
+    </article>
+    <article class="dish">
+      <span class="dish-name">Cocotte de la Vendée — poulet fermier</span>
+      <span class="dish-price">21 €</span>
+      <p class="dish-desc">Pour ceux qui n'aiment pas le poisson. Ça arrive, on ne juge pas.</p>
+    </article>
+  </div>
+
+  <div class="cat rv">
+    <h3>Desserts</h3>
+    <article class="dish">
+      <span class="dish-name">Tarte fine aux pommes, caramel beurre salé</span>
+      <span class="dish-price">9 €</span>
+      <p class="dish-desc">Glace vanille de la ferme de Longeville.</p>
+    </article>
+    <article class="dish">
+      <span class="dish-name">Brioche vendéenne perdue</span>
+      <span class="dish-price">8 €</span>
+      <p class="dish-desc">Crème légère, fraises de saison.</p>
+    </article>
+    <article class="dish">
+      <span class="dish-name">Café gourmand</span>
+      <span class="dish-price">7 €</span>
+      <p class="dish-desc">Trois bouchées selon l'humeur du jour.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============ GALERIE ============ -->
+<section class="gallery" aria-label="Galerie">
+  <div class="gal-grid">
+    <figure class="g-wide rv"><img src="https://picsum.photos/seed/criee-g1/1200/700" alt="Plateau de fruits de mer" loading="lazy"></figure>
+    <figure class="g-tall rv d1"><img src="https://picsum.photos/seed/criee-g2/700/1000" alt="Salle du restaurant" loading="lazy"></figure>
+    <figure class="rv d2"><img src="https://picsum.photos/seed/criee-g3/700/700" alt="Bateaux de pêche au port" loading="lazy"></figure>
+    <figure class="rv"><img src="https://picsum.photos/seed/criee-g4/700/700" alt="Poisson grillé dressé à l'assiette" loading="lazy"></figure>
+    <figure class="rv d1"><img src="https://picsum.photos/seed/criee-g5/700/700" alt="Ambiance de la salle le soir" loading="lazy"></figure>
+    <figure class="g-wide rv d2"><img src="https://picsum.photos/seed/criee-g6/1200/700" alt="Fruits de mer sur glace" loading="lazy"></figure>
+    <figure class="rv"><img src="https://picsum.photos/seed/criee-g7/700/700" alt="Table dressée" loading="lazy"></figure>
+    <figure class="rv d1"><img src="https://picsum.photos/seed/criee-g8/700/700" alt="Plat du jour" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- ============ AVIS ============ -->
+<section class="reviews" id="avis">
+  <div class="rev-head rv">
+    <div>
+      <p class="eyebrow">Exemples d'avis</p>
+      <h2>Ce que pourraient dire vos clients</h2>
+    </div>
+  </div>
+  <div class="rev-grid">
+    <article class="rev-card rv">
+      <div class="stars" aria-label="5 sur 5">★★★★★</div>
+      <blockquote>« Le bar était encore vivant le matin, ça se sent dans l'assiette. On a réservé deux fois dans la même semaine, ce qui ne nous arrive jamais en vacances. »</blockquote>
+      <div class="rev-who"><span class="avatar">MC</span><div><p>Marie-Claire</p><small>La Roche-sur-Yon · juillet</small></div></div>
+    </article>
+    <article class="rev-card rv d1">
+      <div class="stars" aria-label="5 sur 5">★★★★★</div>
+      <blockquote>« Accueil vraiment chaleureux, on nous a expliqué d'où venait chaque produit. Le plateau à deux est copieux, prévoyez de la place pour le dessert. »</blockquote>
+      <div class="rev-who"><span class="avatar">TB</span><div><p>Thomas B.</p><small>Nantes · août</small></div></div>
+    </article>
+    <article class="rev-card rv d2">
+      <div class="stars" aria-label="4 sur 5">★★★★☆</div>
+      <blockquote>« Excellente cuisine, terrasse agréable en soirée. Un peu d'attente sans réservation en plein mois d'août — pensez à appeler avant, c'est tout. »</blockquote>
+      <div class="rev-who"><span class="avatar">SL</span><div><p>Sophie L.</p><small>Angers · août</small></div></div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ NOUS TROUVER ============ -->
+<section class="locate" id="venir">
+  <div class="loc-grid">
+    <div class="rv">
+      <p class="eyebrow">Nous trouver</p>
+      <h2>À deux rues du port de plaisance</h2>
+      <p style="color:rgba(241,237,226,.66);max-width:44ch;">Parking gratuit de la Baisse à 120 m. Accès de plain-pied, terrasse abritée du vent d'ouest.</p>
+      <ul class="info-list">
+        <li><span class="k">Adresse</span><span class="v">12 rue du Port, 85520 Jard-sur-Mer</span></li>
+        <li><span class="k">Téléphone</span><span class="v">02 51 00 00 00</span></li>
+        <li><span class="k">Midi</span><span class="v">12h00 — 14h30, tous les jours</span></li>
+        <li><span class="k">Soir</span><span class="v">19h00 — 22h30, tous les jours</span></li>
+        <li><span class="k">Fermeture</span><span class="v">Lundi hors saison</span></li>
+      </ul>
+      <div style="margin-top:1.8rem;display:flex;gap:.8rem;flex-wrap:wrap;">
+        <a href="tel:+33251000000" class="btn btn-solid">Appeler pour réserver</a>
+        <a href="https://maps.google.com/?q=Jard-sur-Mer" class="btn btn-line">Ouvrir l'itinéraire</a>
+      </div>
+    </div>
+
+    <div class="map-card rv d1">
+      <svg viewBox="0 0 460 380" role="img" aria-label="Carte marine stylisée de Jard-sur-Mer">
+        <rect width="460" height="380" fill="#0E2027"/>
+        <!-- bathymetric contours -->
+        <g fill="none" stroke="#2E6B6B" stroke-width="1" opacity=".55">
+          <path d="M-10,250 C70,232 120,262 190,246 C260,230 320,258 400,240 C430,233 450,238 470,232"/>
+          <path d="M-10,282 C70,264 120,294 190,278 C260,262 320,290 400,272 C430,265 450,270 470,264"/>
+          <path d="M-10,314 C70,296 120,326 190,310 C260,294 320,322 400,304 C430,297 450,302 470,296"/>
+          <path d="M-10,346 C70,328 120,358 190,342 C260,326 320,354 400,336 C430,329 450,334 470,328"/>
+        </g>
+        <!-- coastline -->
+        <path d="M-10,232 C70,214 120,244 190,228 C260,212 320,240 400,222 C430,215 450,220 470,214 L470,-10 L-10,-10 Z" fill="#16303A" stroke="#DFC9A0" stroke-width="1.4" stroke-opacity=".7"/>
+        <!-- grid -->
+        <g stroke="#F1EDE2" stroke-opacity=".055" stroke-width="1">
+          <path d="M115,0 L115,380 M230,0 L230,380 M345,0 L345,380 M0,95 L460,95 M0,190 L460,190 M0,285 L460,285"/>
+        </g>
+        <!-- streets -->
+        <g stroke="#F1EDE2" stroke-opacity=".16" stroke-width="2" stroke-linecap="round">
+          <path d="M150,60 L268,118 L360,96"/>
+          <path d="M96,150 L268,118"/>
+          <path d="M268,118 L300,196"/>
+          <path d="M190,180 L300,196"/>
+        </g>
+        <!-- port marker -->
+        <g>
+          <circle cx="300" cy="196" r="3" fill="#2E6B6B"/>
+          <text x="310" y="200" fill="#F1EDE2" fill-opacity=".45" font-family="IBM Plex Mono, monospace" font-size="8.5">PORT DE PLAISANCE</text>
+        </g>
+        <!-- restaurant pin -->
+        <g>
+          <circle cx="268" cy="118" r="26" fill="none" stroke="#C0472F" stroke-width="1.2" opacity=".5">
+            <animate attributeName="r" values="9;30;9" dur="3.6s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".65;0;.65" dur="3.6s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="268" cy="118" r="6" fill="#C0472F"/>
+          <text x="268" y="96" text-anchor="middle" fill="#DFC9A0" font-family="Fraunces, serif" font-size="13" font-style="italic">La Criée du Marais</text>
+        </g>
+        <!-- compass -->
+        <g transform="translate(410,52)" opacity=".55">
+          <circle r="17" fill="none" stroke="#DFC9A0" stroke-width="1"/>
+          <path d="M0,-13 L4,3 L0,0 L-4,3 Z" fill="#DFC9A0"/>
+          <text y="-21" text-anchor="middle" fill="#DFC9A0" font-family="IBM Plex Mono, monospace" font-size="7.5">N</text>
+        </g>
+        <text x="16" y="366" fill="#F1EDE2" fill-opacity=".3" font-family="IBM Plex Mono, monospace" font-size="8">46°24′N — 1°35′O · CÔTE DE LUMIÈRE</text>
+      </svg>
+      <div class="map-foot">
+        <span>Jard-sur-Mer · Vendée</span>
+        <span>Parking gratuit à 120 m</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESERVATION ============ -->
+<section class="book-band">
+  <div class="rv">
+    <h2>Une table pour ce soir&nbsp;?</h2>
+    <p>Un appel suffit. En juillet-août, mieux vaut réserver la veille pour la terrasse.</p>
+  </div>
+  <a href="tel:+33251000000" class="btn btn-dark rv d1">02 51 00 00 00</a>
+</section>
+
+<footer>
+  <span class="brand">La Criée <i>du Marais</i></span>
+  <span>12 rue du Port, 85520 Jard-sur-Mer · 02 51 00 00 00</span>
+  <span>Exemple de réalisation</span>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var onScroll=function(){nav.classList.toggle('stuck',window.scrollY>60);};
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items=document.querySelectorAll('.rv');
+  if(reduce||!('IntersectionObserver' in window)){
+    items.forEach(function(el){el.classList.add('in');});
+    return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+  items.forEach(function(el){el.classList.add('rv-pre');io.observe(el);});
+})();
+</script>
+</body>
+</html>
