@@ -76,7 +76,7 @@ h1,h2,h3,h4{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:7
 
 /* ===== HERO ===== */
 .hero{position:relative;background:var(--graphite);color:var(--paper);padding:clamp(3.5rem,7vw,6rem) var(--pad) clamp(4rem,7vw,6.5rem);overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:url('https://picsum.photos/seed/rouillard-hero/1800/1200') center/cover;opacity:.16;filter:grayscale(.5)}
+.hero::before{content:'';position:absolute;inset:0;opacity:.5;background-image:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 560'%3E%3Crect width='900' height='560' fill='%232B2825'/%3E%3Ccircle cx='230' cy='170' r='150' fill='none' stroke='%23B0563B' stroke-width='2' opacity='0.28'/%3E%3Ccircle cx='230' cy='170' r='95' fill='none' stroke='%23B0563B' stroke-width='2' opacity='0.22'/%3E%3Cg stroke='%238C9497' stroke-width='14' fill='none' opacity='0.55'%3E%3Cpath d='M60,420 L60,260 Q60,220 100,220 L340,220'/%3E%3Cpath d='M340,220 Q380,220 380,260 L380,420'/%3E%3C/g%3E%3Cg stroke='%23D9835F' stroke-width='6' fill='none' opacity='0.7'%3E%3Cpath d='M60,420 L60,260 Q60,220 100,220 L340,220'/%3E%3Cpath d='M340,220 Q380,220 380,260 L380,420'/%3E%3C/g%3E%3Ccircle cx='60' cy='260' r='16' fill='%232B2825' stroke='%23B0563B' stroke-width='4'/%3E%3Ccircle cx='380' cy='260' r='16' fill='%232B2825' stroke='%23B0563B' stroke-width='4'/%3E%3Cg fill='%23B0563B' opacity='0.85'%3E%3Crect x='620' y='150' width='16' height='170' rx='3'/%3E%3Crect x='585' y='140' width='86' height='24' rx='4'/%3E%3C/g%3E%3Cg fill='%238C9497' opacity='0.5'%3E%3Crect x='700' y='300' width='140' height='18' rx='4'/%3E%3Crect x='700' y='330' width='100' height='18' rx='4'/%3E%3C/g%3E%3C/svg%3E");background-size:cover;background-position:center}
 .hero::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(112deg,transparent,transparent 62px,rgba(169,85,47,.05) 62px,rgba(169,85,47,.05) 64px)}
 .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
 .hero .kicker{color:var(--copper-lit)}
@@ -150,6 +150,16 @@ h1,h2,h3,h4{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:7
 .mapcard svg{display:block;width:100%;height:auto}
 .mapfoot{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 1rem;border-top:1px solid var(--rule-d);font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(237,234,227,.45)}
 @media(max-width:900px){.zone-grid{grid-template-columns:1fr}}
+
+
+/* ===== EMPLACEMENTS PHOTO (a remplacer par les vraies photos du client) ===== */
+.gal-grid figure{background:linear-gradient(150deg,var(--graphite-2),var(--graphite));border:1px solid rgba(237,234,227,.09)}
+.shot{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.55rem;text-align:center;padding:1.2rem}
+.shot::before{content:'';position:absolute;inset:0;opacity:.5;background:repeating-linear-gradient(135deg,rgba(237,234,227,.05) 0 10px,transparent 10px 20px)}
+.shot-mark{position:relative;width:34px;height:26px;border:1.5px solid rgba(200,111,62,.6);border-radius:3px;flex-shrink:0}
+.shot-mark::before{content:'';position:absolute;left:4px;right:4px;bottom:4px;height:9px;border-radius:2px;background:rgba(200,111,62,.45);clip-path:polygon(0 100%,32% 34%,54% 68%,72% 44%,100% 100%)}
+.shot-mark::after{content:'';position:absolute;top:5px;right:6px;width:5px;height:5px;border-radius:50%;background:rgba(200,111,62,.65)}
+.shot-txt{position:relative;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(237,234,227,.42);line-height:1.6}
 
 /* ===== GALERIE ===== */
 .gal{background:var(--soot);padding:0 0 clamp(4rem,7vw,6rem)}
@@ -398,14 +408,14 @@ footer{background:var(--soot);color:rgba(237,234,227,.45);padding:2.4rem var(--p
 <!-- ===== GALERIE ===== -->
 <section class="gal" aria-label="Réalisations">
   <div class="gal-grid">
-    <figure class="gw rv"><img src="https://picsum.photos/seed/rouillard-g1/1200/700" alt="Salle de bain rénovée" loading="lazy" onerror="this.style.display='none'"><figcaption>Salle de bain — après rénovation</figcaption></figure>
-    <figure class="gt rv d1"><img src="https://picsum.photos/seed/rouillard-g2/700/1000" alt="Intervention en cours" loading="lazy" onerror="this.style.display='none'"><figcaption>Recherche de fuite</figcaption></figure>
-    <figure class="rv d2"><img src="https://picsum.photos/seed/rouillard-g3/700/700" alt="Outillage" loading="lazy" onerror="this.style.display='none'"><figcaption>Atelier</figcaption></figure>
-    <figure class="rv"><img src="https://picsum.photos/seed/rouillard-g4/700/700" alt="Tuyauterie cuivre" loading="lazy" onerror="this.style.display='none'"><figcaption>Réseau cuivre neuf</figcaption></figure>
-    <figure class="rv d1"><img src="https://picsum.photos/seed/rouillard-g5/700/700" alt="Chaudière" loading="lazy" onerror="this.style.display='none'"><figcaption>Entretien chaudière</figcaption></figure>
-    <figure class="gw rv d2"><img src="https://picsum.photos/seed/rouillard-g6/1200/700" alt="Douche à l'italienne" loading="lazy" onerror="this.style.display='none'"><figcaption>Douche à l'italienne — Saint-Vincent</figcaption></figure>
-    <figure class="rv"><img src="https://picsum.photos/seed/rouillard-g7/700/700" alt="Outils" loading="lazy" onerror="this.style.display='none'"><figcaption>Matériel embarqué</figcaption></figure>
-    <figure class="rv d1"><img src="https://picsum.photos/seed/rouillard-g8/700/700" alt="Intérieur rénové" loading="lazy" onerror="this.style.display='none'"><figcaption>Remise en eau — résidence secondaire</figcaption></figure>
+    <figure class="gw rv"><div class="shot"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div><figcaption>Salle de bain — après rénovation</figcaption></figure>
+    <figure class="gt rv d1"><div class="shot"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div><figcaption>Recherche de fuite</figcaption></figure>
+    <figure class="rv d2"><div class="shot"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div><figcaption>Atelier</figcaption></figure>
+    <figure class="rv"><div class="shot"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div><figcaption>Réseau cuivre neuf</figcaption></figure>
+    <figure class="rv d1"><div class="shot"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div><figcaption>Entretien chaudière</figcaption></figure>
+    <figure class="gw rv d2"><div class="shot"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div><figcaption>Douche à l'italienne — Saint-Vincent</figcaption></figure>
+    <figure class="rv"><div class="shot"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div><figcaption>Matériel embarqué</figcaption></figure>
+    <figure class="rv d1"><div class="shot"><span class="shot-mark"></span><span class="shot-txt">Votre photo</span></div><figcaption>Remise en eau — résidence secondaire</figcaption></figure>
   </div>
 </section>
 
