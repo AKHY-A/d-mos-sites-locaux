@@ -57,7 +57,7 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.0
   repeating-linear-gradient(135deg,rgba(232,196,184,.07) 0 8px,transparent 8px 16px),
   linear-gradient(150deg,var(--noir-3),var(--noir-2));
   display:grid;place-items:center;overflow:hidden}
-.ph::before{content:attr(data-ph);font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,241,234,.3);text-align:center;padding:0 1rem}
+.ph::before{content:'';position:absolute;width:30px;height:22px;top:50%;left:50%;transform:translate(-50%,calc(-50% - 18px));border:1.5px solid rgba(200,111,62,.55);border-radius:3px}.ph::after{content:attr(data-ph);font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,241,234,.35);text-align:center;padding:0 1rem;position:relative;margin-top:18px}
 .ph img{position:relative;z-index:1}
 
 /* ================= NAV ================= */
@@ -76,7 +76,7 @@ h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.0
 
 /* ================= HERO ================= */
 .hero{position:relative;min-height:92svh;display:flex;align-items:flex-end;padding:7rem var(--pad) 0;color:var(--creme);overflow:hidden;background:var(--noir)}
-.hero-bg{position:absolute;inset:0;z-index:0;background:#211F1D url('https://picsum.photos/seed/leonie-hero/2000/1400') center 28%/cover no-repeat;transform:scale(1.05);animation:drift 26s ease-in-out infinite alternate}
+.hero-bg{position:absolute;inset:0;z-index:0;background:#211F1D url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 560'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23211F1D'/%3E%3Cstop offset='1' stop-color='%232B2825'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='900' height='560' fill='url(%23bg)'/%3E%3Ccircle cx='620' cy='230' r='190' fill='none' stroke='%23E8C4B8' stroke-width='1.5' opacity='0.25'/%3E%3Ccircle cx='620' cy='230' r='140' fill='none' stroke='%23B7975B' stroke-width='1.5' opacity='0.22'/%3E%3Cpath d='M560,120 Q660,140 650,240 Q645,300 600,340 Q650,320 680,260 Q700,190 660,130 Q640,110 560,120 Z' fill='%239C5A46' opacity='0.55'/%3E%3Cpath d='M580,130 Q650,155 640,235 Q636,285 605,315' fill='none' stroke='%23E8C4B8' stroke-width='3' opacity='0.35'/%3E%3Cg fill='%23B7975B' opacity='0.7'%3E%3Ccircle cx='230' cy='160' r='3'/%3E%3Ccircle cx='260' cy='200' r='2'/%3E%3Ccircle cx='210' cy='210' r='2'/%3E%3C/g%3E%3C/svg%3E") center 28%/cover no-repeat;transform:scale(1.05);animation:drift 26s ease-in-out infinite alternate}
 @keyframes drift{to{transform:scale(1.12) translate3d(-1.4%,-.8%,0)}}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(178deg,rgba(33,31,29,.52) 0%,rgba(33,31,29,.42) 34%,rgba(33,31,29,.94) 86%,var(--noir) 100%)}
 .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:2.2rem}
@@ -435,26 +435,26 @@ footer .brand{font-size:1rem}
   <div class="ba">
     <article class="ba-item rv">
       <div class="ba-pair">
-        <figure class="ph" data-ph="Photo avant"><img src="https://picsum.photos/seed/leonie-avant1/700/900" alt="Cheveux avant la prestation" loading="lazy" onerror="this.remove()"><figcaption>Avant</figcaption></figure>
-        <figure class="ph" data-ph="Photo après"><img src="https://picsum.photos/seed/leonie-apres1/700/900" alt="Résultat après balayage" loading="lazy" onerror="this.remove()"><figcaption>Après</figcaption></figure>
+        <figure class="ph" data-ph="Photo avant"><figcaption>Avant</figcaption></figure>
+        <figure class="ph" data-ph="Photo après"><figcaption>Après</figcaption></figure>
       </div>
       <div class="ba-cap"><b>Balayage caramel</b><span>2h15 · sur base châtain</span></div>
     </article>
 
     <article class="ba-item rv d1">
       <div class="ba-pair">
-        <figure class="ph" data-ph="Photo avant"><img src="https://picsum.photos/seed/leonie-avant2/700/900" alt="Cheveux avant la coupe" loading="lazy" onerror="this.remove()"><figcaption>Avant</figcaption></figure>
-        <figure class="ph" data-ph="Photo après"><img src="https://picsum.photos/seed/leonie-apres2/700/900" alt="Résultat après coupe carré" loading="lazy" onerror="this.remove()"><figcaption>Après</figcaption></figure>
+        <figure class="ph" data-ph="Photo avant"><figcaption>Avant</figcaption></figure>
+        <figure class="ph" data-ph="Photo après"><figcaption>Après</figcaption></figure>
       </div>
       <div class="ba-cap"><b>Passage au carré</b><span>50 min · −18 cm</span></div>
     </article>
   </div>
 
   <div class="bk-strip">
-    <figure class="ph rv" data-ph="Coupe &amp; brushing"><img src="https://picsum.photos/seed/leonie-coupe/700/900" alt="Coupe et brushing" loading="lazy" onerror="this.remove()"><figcaption>Coupe &amp; brushing</figcaption></figure>
-    <figure class="ph rv d1" data-ph="Chignon mariage"><img src="https://picsum.photos/seed/leonie-chignon/700/900" alt="Chignon de mariage" loading="lazy" onerror="this.remove()"><figcaption>Chignon mariage</figcaption></figure>
-    <figure class="ph rv d2" data-ph="Soin en cabine"><img src="https://picsum.photos/seed/leonie-soin/700/900" alt="Soin en cabine" loading="lazy" onerror="this.remove()"><figcaption>Soin réparateur</figcaption></figure>
-    <figure class="ph rv d3" data-ph="Le salon"><img src="https://picsum.photos/seed/leonie-salon/700/900" alt="Intérieur du salon" loading="lazy" onerror="this.remove()"><figcaption>À l'intérieur</figcaption></figure>
+    <figure class="ph rv" data-ph="Coupe &amp; brushing"><figcaption>Coupe &amp; brushing</figcaption></figure>
+    <figure class="ph rv d1" data-ph="Chignon mariage"><figcaption>Chignon mariage</figcaption></figure>
+    <figure class="ph rv d2" data-ph="Soin en cabine"><figcaption>Soin réparateur</figcaption></figure>
+    <figure class="ph rv d3" data-ph="Le salon"><figcaption>À l'intérieur</figcaption></figure>
   </div>
 </section>
 
@@ -497,7 +497,7 @@ footer .brand{font-size:1rem}
       </ul>
     </div>
     <figure class="polaroid rv d1">
-      <div class="ph" data-ph="Devanture du salon"><img src="https://picsum.photos/seed/leonie-devanture/700/700" alt="Devanture du salon" loading="lazy" onerror="this.remove()"></div>
+      <div class="ph" data-ph="Devanture du salon"></div>
       <figcaption>Studio Léonie, rue de l'Église</figcaption>
     </figure>
   </div>
