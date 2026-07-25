@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rouillard Plomberie &amp; Chauffage — Plombier chauffagiste à Jard-sur-Mer (85)</title>
+<meta name="description" content="Plombier chauffagiste à Jard-sur-Mer. Dépannage sous 24h, entretien de chaudière, rénovation de salle de bain. Devis gratuit, déplacement offert sur le secteur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Archivo:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS ===== */
+:root{
+  --soot:#1A1A18;
+  --graphite:#2A2A27;
+  --graphite-2:#35352F;
+  --copper:#A9552F;
+  --copper-lit:#C86F3E;
+  --zinc:#8B9296;
+  --paper:#EDEAE3;
+  --paper-2:#E3DFD5;
+  --ink:#22221F;
+  --ink-soft:#5B5B55;
+  --rule-l:rgba(34,34,31,.14);
+  --rule-d:rgba(237,234,227,.13);
+  --pad:clamp(1.4rem,6vw,7rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Archivo',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-weight:700;line-height:1.06;letter-spacing:-.02em}
+.mono{font-family:'DM Mono',ui-monospace,monospace}
+:focus-visible{outline:2.5px solid var(--copper-lit);outline-offset:3px;border-radius:2px}
+::selection{background:var(--copper);color:var(--paper)}
+
+/* ===== REVEAL ===== */
+.rv{transition:opacity .8s cubic-bezier(.2,.6,.35,1),transform .8s cubic-bezier(.2,.6,.35,1)} .rv-pre{opacity:0;transform:translateY(22px);}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+
+/* ===== SHARED ===== */
+.kicker{font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.17em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.65rem;margin-bottom:1rem}
+.kicker::before{content:'';width:20px;height:1px;background:currentColor;opacity:.6}
+.btn{display:inline-flex;align-items:center;gap:.55rem;padding:.95rem 1.65rem;border-radius:2px;font-weight:700;font-size:.94rem;border:1px solid transparent;transition:background .24s ease,transform .24s ease,box-shadow .24s ease,border-color .24s ease}
+.btn-solid{background:var(--copper);color:var(--paper)}
+.btn-solid:hover{background:var(--copper-lit);transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(169,85,47,.8)}
+.btn-line{border-color:rgba(237,234,227,.35);color:var(--paper)}
+.btn-line:hover{background:rgba(237,234,227,.09);border-color:rgba(237,234,227,.6)}
+.btn-dark{background:var(--soot);color:var(--paper)}
+.btn-dark:hover{background:var(--graphite);transform:translateY(-2px)}
+
+/* ===== URGENCE BAR ===== */
+.urgbar{position:relative;z-index:95;background:var(--copper);color:var(--paper);display:flex;align-items:center;justify-content:center;gap:1.4rem;flex-wrap:wrap;padding:.5rem 1rem;font-family:'DM Mono',monospace;font-size:.73rem;letter-spacing:.06em;text-transform:uppercase}
+.urgbar b{font-weight:500}
+.urgbar a{border-bottom:1px solid rgba(237,234,227,.5);padding-bottom:1px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--paper);display:inline-block;margin-right:.45rem;animation:blip 2.2s ease-in-out infinite}
+@keyframes blip{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* ===== NAV ===== */
+.nav{position:sticky;top:0;z-index:90;background:var(--soot);display:flex;align-items:center;justify-content:space-between;padding:.95rem var(--pad);border-bottom:1px solid var(--rule-d);transition:padding .3s ease}
+.nav.stuck{padding:.65rem var(--pad)}
+.brand{display:flex;align-items:center;gap:.65rem;color:var(--paper);font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
+.brand .mk{width:30px;height:30px;border-radius:3px;background:var(--copper);display:grid;place-items:center;font-family:'DM Mono',monospace;font-size:.72rem;color:var(--paper);flex-shrink:0}
+.brand em{font-style:normal;color:var(--copper-lit)}
+.nav ul{list-style:none;display:flex;align-items:center;gap:1.7rem}
+.nav ul a{color:var(--paper);font-size:.86rem;font-weight:500;position:relative;padding-block:.3rem}
+.nav ul a::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--copper-lit);transition:width .28s cubic-bezier(.2,.6,.35,1)}
+.nav ul a:hover::after{width:100%}
+.nav .tel{background:var(--copper);padding:.6rem 1.1rem;border-radius:2px;font-weight:700;transition:background .24s ease}
+.nav .tel::after{display:none}
+.nav .tel:hover{background:var(--copper-lit)}
+@media(max-width:900px){.nav ul li:not(.keep){display:none}}
+
+/* ===== HERO ===== */
+.hero{position:relative;background:var(--graphite);color:var(--paper);padding:clamp(3.5rem,7vw,6rem) var(--pad) clamp(4rem,7vw,6.5rem);overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url('https://picsum.photos/seed/rouillard-hero/1800/1200') center/cover;opacity:.16;filter:grayscale(.5)}
+.hero::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(112deg,transparent,transparent 62px,rgba(169,85,47,.05) 62px,rgba(169,85,47,.05) 64px)}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+.hero .kicker{color:var(--copper-lit)}
+.hero h1{font-size:clamp(2.3rem,5.6vw,4.2rem);max-width:14ch;margin-bottom:1.2rem;font-weight:800}
+.hero h1 em{font-style:normal;color:var(--copper-lit)}
+.hero>.hero-grid p.sub{color:rgba(237,234,227,.76);max-width:44ch;font-size:1.05rem;margin-bottom:2rem}
+.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap}
+
+/* --- SIGNATURE : fiche d'intervention --- */
+.fiche{position:relative;background:var(--paper);color:var(--ink);border-radius:3px;box-shadow:0 24px 60px -30px rgba(0,0,0,.8);overflow:hidden}
+.fiche::before{content:'';position:absolute;left:0;right:0;top:0;height:8px;background:repeating-linear-gradient(90deg,var(--paper) 0 7px,var(--graphite) 7px 12px)}
+.fiche-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;padding:1.6rem 1.5rem 1rem;border-bottom:1px dashed var(--rule-l)}
+.fiche-head h2{font-size:1.05rem;letter-spacing:.02em;text-transform:uppercase;font-weight:700}
+.fiche-head .ref{font-family:'DM Mono',monospace;font-size:.66rem;color:var(--ink-soft);letter-spacing:.08em;text-align:right;line-height:1.5}
+.fiche-rows{padding:.5rem 1.5rem 1.1rem}
+.frow{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.72rem 0;border-bottom:1px solid var(--rule-l);font-size:.9rem}
+.frow:last-child{border-bottom:none}
+.frow .k{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.frow .v{font-weight:600;display:inline-flex;align-items:center;gap:.45rem}
+.chk{width:15px;height:15px;border:1.5px solid var(--copper);border-radius:2px;display:grid;place-items:center;color:var(--copper);font-size:.66rem;font-weight:700;flex-shrink:0}
+.fiche-foot{background:var(--paper-2);padding:.85rem 1.5rem;font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+
+/* ===== REASSURANCE ===== */
+.reass{background:var(--soot);color:var(--paper);padding:clamp(2.5rem,5vw,3.6rem) var(--pad);display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background-image:none}
+.reass-i{padding:.4rem 1.4rem;border-left:1px solid var(--rule-d)}
+.reass-i:first-child{border-left:none;padding-left:0}
+.reass-i .big{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.5rem,2.6vw,2.1rem);color:var(--copper-lit);font-weight:800;display:block;line-height:1.1}
+.reass-i .lbl{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:rgba(237,234,227,.6);margin-top:.4rem;display:block}
+@media(max-width:900px){.reass{grid-template-columns:repeat(2,1fr);gap:1.6rem 0}.reass-i{border-left:none;padding-left:0}}
+
+/* ===== SERVICES ===== */
+.svc{padding:clamp(4rem,8vw,7rem) var(--pad);background:var(--paper)}
+.svc .kicker{color:var(--copper)}
+.svc>h2{font-size:clamp(1.8rem,3.6vw,2.8rem);max-width:19ch;margin-bottom:2.6rem;color:var(--soot)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-l);border:1px solid var(--rule-l)}
+.svc-card{background:var(--paper);padding:1.9rem 1.6rem;transition:background .3s ease,transform .3s ease}
+.svc-card:hover{background:var(--paper-2)}
+.svc-card h3{font-size:1.08rem;margin-bottom:.55rem;font-weight:700;display:flex;align-items:center;gap:.55rem}
+.svc-card h3 .ic{width:26px;height:26px;border-radius:2px;background:var(--copper);color:var(--paper);display:grid;place-items:center;font-size:.8rem;flex-shrink:0}
+.svc-card p{font-size:.9rem;color:var(--ink-soft)}
+.svc-card .tags{margin-top:.9rem;display:flex;flex-wrap:wrap;gap:.35rem}
+.svc-card .tags span{font-family:'DM Mono',monospace;font-size:.63rem;letter-spacing:.05em;border:1px solid var(--rule-l);padding:.16rem .5rem;border-radius:2px;color:var(--ink-soft)}
+@media(max-width:900px){.svc-grid{grid-template-columns:1fr}}
+
+/* ===== PROCESS ===== */
+.proc{background:var(--graphite);color:var(--paper);padding:clamp(4rem,8vw,7rem) var(--pad)}
+.proc .kicker{color:var(--copper-lit)}
+.proc>h2{font-size:clamp(1.8rem,3.6vw,2.7rem);max-width:18ch;margin-bottom:.9rem}
+.proc>p.intro{color:rgba(237,234,227,.62);max-width:52ch;margin-bottom:2.8rem}
+.steps{border-top:1px solid var(--rule-d)}
+.step{display:grid;grid-template-columns:64px 1fr auto;gap:1.4rem;align-items:baseline;padding:1.5rem 0;border-bottom:1px solid var(--rule-d);transition:padding-left .3s cubic-bezier(.2,.6,.35,1)}
+.step:hover{padding-left:.6rem}
+.step .n{font-family:'DM Mono',monospace;font-size:.78rem;color:var(--copper-lit);letter-spacing:.08em}
+.step h3{font-size:1.12rem;margin-bottom:.35rem;font-weight:600}
+.step p{font-size:.9rem;color:rgba(237,234,227,.55);max-width:56ch}
+.step .when{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--zinc);white-space:nowrap;letter-spacing:.05em}
+@media(max-width:760px){.step{grid-template-columns:44px 1fr;gap:1rem}.step .when{grid-column:2;margin-top:.4rem}}
+
+/* ===== ZONE ===== */
+.zone{background:var(--soot);color:var(--paper);padding:clamp(4rem,8vw,7rem) var(--pad)}
+.zone .kicker{color:var(--copper-lit)}
+.zone-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.zone h2{font-size:clamp(1.8rem,3.6vw,2.7rem);max-width:15ch;margin-bottom:1rem}
+.zone p.intro{color:rgba(237,234,227,.62);max-width:42ch;margin-bottom:1.7rem}
+.communes{list-style:none;border-top:1px solid var(--rule-d)}
+.communes li{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--rule-d);font-size:.93rem}
+.communes li.base{color:var(--copper-lit);font-weight:700}
+.communes .d{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--zinc);letter-spacing:.04em}
+.mapcard{border:1px solid var(--rule-d);border-radius:3px;overflow:hidden;background:var(--graphite)}
+.mapcard svg{display:block;width:100%;height:auto}
+.mapfoot{display:flex;justify-content:space-between;gap:1rem;padding:.7rem 1rem;border-top:1px solid var(--rule-d);font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(237,234,227,.45)}
+@media(max-width:900px){.zone-grid{grid-template-columns:1fr}}
+
+/* ===== GALERIE ===== */
+.gal{background:var(--soot);padding:0 0 clamp(4rem,7vw,6rem)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:min(20vw,205px);gap:6px;padding:0 var(--pad)}
+.gal-grid figure{position:relative;overflow:hidden;border-radius:2px;background:linear-gradient(135deg,var(--graphite-2),var(--graphite));display:grid;place-items:center}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform .85s cubic-bezier(.2,.6,.35,1),filter .45s ease;filter:saturate(.9)}
+.gal-grid figure:hover img{transform:scale(1.06);filter:saturate(1.04)}
+.gal-grid figcaption{position:absolute;left:0;bottom:0;right:0;padding:.7rem .8rem;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.07em;text-transform:uppercase;color:var(--paper);background:linear-gradient(to top,rgba(26,26,24,.9),transparent);pointer-events:none}
+.gt{grid-row:span 2}.gw{grid-column:span 2}
+@media(max-width:900px){.gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:min(37vw,180px)}.gt{grid-row:span 1}.gw{grid-column:span 2}}
+
+/* ===== AVIS ===== */
+.avis{background:var(--paper-2);padding:clamp(4rem,8vw,7rem) var(--pad)}
+.avis .kicker{color:var(--copper)}
+.avis>h2{font-size:clamp(1.7rem,3.3vw,2.5rem);max-width:20ch;margin-bottom:2.4rem;color:var(--soot)}
+.avis-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.avis-card{background:var(--paper);border:1px solid var(--rule-l);border-radius:3px;padding:1.8rem 1.55rem;display:flex;flex-direction:column;gap:.95rem;transition:transform .32s cubic-bezier(.2,.6,.35,1),box-shadow .32s ease}
+.avis-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px -22px rgba(26,26,24,.6)}
+.avis-card .ctx{font-family:'DM Mono',monospace;font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;color:var(--copper)}
+.avis-card blockquote{font-size:.98rem;line-height:1.55;color:var(--soot)}
+.avis-who{display:flex;align-items:center;gap:.7rem;margin-top:auto;padding-top:.3rem}
+.av{width:33px;height:33px;border-radius:50%;background:var(--graphite);color:var(--paper);display:grid;place-items:center;font-family:'DM Mono',monospace;font-size:.74rem;flex-shrink:0}
+.avis-who p{font-size:.85rem;font-weight:700;line-height:1.25}
+.avis-who small{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--ink-soft)}
+@media(max-width:900px){.avis-grid{grid-template-columns:1fr}}
+
+/* ===== GARANTIES ===== */
+.gar{background:var(--paper);padding:clamp(3rem,6vw,4.5rem) var(--pad);display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center;border-top:1px solid var(--rule-l)}
+.gar-i{display:flex;flex-direction:column;gap:.25rem}
+.gar-i b{font-family:'Bricolage Grotesque',sans-serif;font-size:1.05rem;color:var(--soot)}
+.gar-i span{font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* ===== CONTACT BAND ===== */
+.band{background:var(--copper);color:var(--paper);padding:clamp(3.4rem,7vw,5.5rem) var(--pad);display:flex;justify-content:space-between;align-items:center;gap:2rem;flex-wrap:wrap}
+.band h2{font-size:clamp(1.7rem,3.3vw,2.5rem);max-width:16ch}
+.band p{margin-top:.6rem;color:rgba(237,234,227,.82);max-width:38ch;font-size:.97rem}
+
+footer{background:var(--soot);color:rgba(237,234,227,.45);padding:2.4rem var(--pad);display:flex;justify-content:space-between;gap:1.1rem;flex-wrap:wrap;align-items:center;font-size:.82rem}
+
+/* ===== DEMO PILL ===== */
+.demo{position:fixed;right:1rem;bottom:1rem;z-index:120;display:flex;align-items:center;gap:.55rem;background:rgba(26,26,24,.92);color:rgba(237,234,227,.92);border:1px solid rgba(200,111,62,.4);border-radius:100px;padding:.5rem .95rem;font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;backdrop-filter:blur(8px);box-shadow:0 8px 24px -12px rgba(0,0,0,.7)}
+.demo::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--copper-lit);flex-shrink:0}
+@media(max-width:520px){.demo{left:1rem;right:1rem;justify-content:center;font-size:.6rem;padding:.45rem .8rem}}
+</style>
+</head>
+<body>
+
+<div class="demo">Site de démonstration</div>
+
+<div class="urgbar">
+  <span><span class="dot"></span>Dépannage urgent 7j/7</span>
+  <span><b>02 51 00 00 01</b></span>
+  <span><a href="#zone">Secteur Jard-sur-Mer &amp; 20 km</a></span>
+</div>
+
+<nav class="nav" id="nav">
+  <a href="#top" class="brand"><span class="mk">RP</span>Rouillard <em>Plomberie</em></a>
+  <ul>
+    <li><a href="#services">Prestations</a></li>
+    <li><a href="#process">Comment ça se passe</a></li>
+    <li><a href="#zone">Secteur</a></li>
+    <li><a href="#avis">Avis</a></li>
+    <li class="keep"><a href="tel:+33251000001" class="tel">Appeler</a></li>
+  </ul>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="hero-grid">
+    <div class="rv">
+      <p class="kicker">Artisan plombier chauffagiste · Vendée</p>
+      <h1>Une fuite ne vous laisse pas <em>le temps de comparer</em></h1>
+      <p class="sub">Alors autant avoir le bon numéro. Dépannage, chauffage, salle de bain — je travaille seul, sur le secteur, et je réponds moi-même au téléphone.</p>
+      <div class="hero-cta">
+        <a href="tel:+33251000001" class="btn btn-solid">02 51 00 00 01</a>
+        <a href="#process" class="btn btn-line">Comment ça se passe</a>
+      </div>
+    </div>
+
+    <!-- SIGNATURE : fiche d'intervention -->
+    <div class="fiche rv d1">
+      <div class="fiche-head">
+        <h2>Bon d'intervention</h2>
+        <span class="ref">N° 2026-0714<br>Exemplaire client</span>
+      </div>
+      <div class="fiche-rows">
+        <div class="frow"><span class="k">Délai moyen</span><span class="v">Sous 24 h</span></div>
+        <div class="frow"><span class="k">Devis</span><span class="v"><span class="chk">✓</span>Gratuit</span></div>
+        <div class="frow"><span class="k">Déplacement</span><span class="v"><span class="chk">✓</span>Offert sur le secteur</span></div>
+        <div class="frow"><span class="k">Urgence week-end</span><span class="v"><span class="chk">✓</span>Sur appel</span></div>
+        <div class="frow"><span class="k">Paiement</span><span class="v">Après intervention</span></div>
+      </div>
+      <div class="fiche-foot">
+        <span>Assurance décennale à jour</span>
+        <span>Garantie 2 ans</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== REASSURANCE ===== -->
+<section class="reass">
+  <div class="reass-i rv"><span class="big">24 h</span><span class="lbl">délai d'intervention moyen</span></div>
+  <div class="reass-i rv d1"><span class="big">20 km</span><span class="lbl">rayon autour de Jard-sur-Mer</span></div>
+  <div class="reass-i rv d2"><span class="big">0 €</span><span class="lbl">devis et déplacement</span></div>
+  <div class="reass-i rv d3"><span class="big">2 ans</span><span class="lbl">garantie pièces et main d'œuvre</span></div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="svc" id="services">
+  <p class="kicker">Prestations</p>
+  <h2>Du robinet qui goutte au remplacement de chaudière</h2>
+  <div class="svc-grid">
+    <article class="svc-card rv">
+      <h3><span class="ic">!</span>Dépannage urgent</h3>
+      <p>Fuite, canalisation bouchée, ballon d'eau chaude en panne. Priorité donnée aux situations qui dégradent le logement.</p>
+      <div class="tags"><span>fuite</span><span>débouchage</span><span>recherche de fuite</span></div>
+    </article>
+    <article class="svc-card rv d1">
+      <h3><span class="ic">≈</span>Chauffage &amp; chaudière</h3>
+      <p>Entretien annuel obligatoire, réparation, remplacement. Gaz, fioul, électrique et pompe à chaleur.</p>
+      <div class="tags"><span>entretien</span><span>attestation</span><span>remplacement</span></div>
+    </article>
+    <article class="svc-card rv d2">
+      <h3><span class="ic">⌂</span>Salle de bain</h3>
+      <p>Rénovation complète ou remplacement ponctuel : douche à l'italienne, WC suspendu, robinetterie, meuble vasque.</p>
+      <div class="tags"><span>rénovation</span><span>accessibilité PMR</span></div>
+    </article>
+    <article class="svc-card rv">
+      <h3><span class="ic">◇</span>Sanitaires &amp; réseaux</h3>
+      <p>Remplacement de tuyauterie vétuste, création d'arrivée d'eau, mise aux normes avant vente.</p>
+      <div class="tags"><span>cuivre</span><span>PER</span><span>mise aux normes</span></div>
+    </article>
+    <article class="svc-card rv d1">
+      <h3><span class="ic">☂</span>Résidences secondaires</h3>
+      <p>Mise hors gel avant l'hiver, remise en eau au printemps, vérification avant l'arrivée des locataires.</p>
+      <div class="tags"><span>hivernage</span><span>remise en eau</span><span>clés confiées</span></div>
+    </article>
+    <article class="svc-card rv d2">
+      <h3><span class="ic">⚑</span>Professionnels</h3>
+      <p>Campings, gîtes, restaurants : contrats d'entretien et interventions prioritaires en pleine saison.</p>
+      <div class="tags"><span>contrat</span><span>astreinte saison</span></div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== PROCESS ===== -->
+<section class="proc" id="process">
+  <p class="kicker">Comment ça se passe</p>
+  <h2>Cinq étapes, pas de mauvaise surprise</h2>
+  <p class="intro">Le déroulé est toujours le même, que ce soit pour une fuite à 21h ou une salle de bain complète.</p>
+  <div class="steps">
+    <div class="step rv">
+      <span class="n">01</span>
+      <div><h3>Vous appelez</h3><p>Je réponds moi-même. Décrivez le problème, si possible envoyez une photo par SMS — ça me permet d'arriver avec la bonne pièce.</p></div>
+      <span class="when">immédiat</span>
+    </div>
+    <div class="step rv">
+      <span class="n">02</span>
+      <div><h3>Diagnostic sur place</h3><p>Je me déplace, j'identifie l'origine du problème et je vous explique ce qui doit être fait — et ce qui peut attendre.</p></div>
+      <span class="when">sous 24 h</span>
+    </div>
+    <div class="step rv">
+      <span class="n">03</span>
+      <div><h3>Devis écrit et gratuit</h3><p>Prix des pièces, temps de main d'œuvre, total TTC. Rien ne commence sans votre accord.</p></div>
+      <span class="when">même jour</span>
+    </div>
+    <div class="step rv">
+      <span class="n">04</span>
+      <div><h3>Intervention</h3><p>Chantier protégé, nettoyage en fin de journée. Si un imprévu change le montant, je vous préviens avant de continuer.</p></div>
+      <span class="when">date convenue</span>
+    </div>
+    <div class="step rv">
+      <span class="n">05</span>
+      <div><h3>Facture et garantie</h3><p>Facture détaillée, garantie 2 ans sur les pièces et la main d'œuvre. Un souci après coup&nbsp;? Je repasse.</p></div>
+      <span class="when">2 ans</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ZONE ===== -->
+<section class="zone" id="zone">
+  <div class="zone-grid">
+    <div class="rv">
+      <p class="kicker">Secteur d'intervention</p>
+      <h2>Basé à Jard-sur-Mer, mobile sur la côte</h2>
+      <p class="intro">Je n'interviens que dans un rayon de 20 km. C'est volontaire : c'est ce qui me permet de passer le jour même quand c'est urgent.</p>
+      <ul class="communes">
+        <li class="base"><span>Jard-sur-Mer</span><span class="d">base · 0 km</span></li>
+        <li><span>Saint-Vincent-sur-Jard</span><span class="d">3 km · ~8 min</span></li>
+        <li><span>Longeville-sur-Mer</span><span class="d">6 km · ~11 min</span></li>
+        <li><span>Avrillé</span><span class="d">9 km · ~14 min</span></li>
+        <li><span>Le Bernard</span><span class="d">10 km · ~15 min</span></li>
+        <li><span>La Tranche-sur-Mer</span><span class="d">17 km · ~24 min</span></li>
+        <li><span>Talmont-Saint-Hilaire</span><span class="d">18 km · ~25 min</span></li>
+      </ul>
+    </div>
+
+    <div class="mapcard rv d1">
+      <svg viewBox="0 0 460 400" role="img" aria-label="Carte du secteur d'intervention autour de Jard-sur-Mer">
+        <rect width="460" height="400" fill="#2A2A27"/>
+        <g stroke="#EDEAE3" stroke-opacity=".05" stroke-width="1">
+          <path d="M115,0 L115,400 M230,0 L230,400 M345,0 L345,400 M0,100 L460,100 M0,200 L460,200 M0,300 L460,300"/>
+        </g>
+        <!-- littoral -->
+        <path d="M-10,300 C60,286 130,312 200,298 C270,284 330,308 400,294 C430,288 450,292 470,288 L470,410 L-10,410 Z" fill="#1A1A18"/>
+        <path d="M-10,300 C60,286 130,312 200,298 C270,284 330,308 400,294 C430,288 450,292 470,288" fill="none" stroke="#8B9296" stroke-width="1.3" stroke-opacity=".5"/>
+        <text x="18" y="332" fill="#8B9296" fill-opacity=".5" font-family="DM Mono, monospace" font-size="8.5" letter-spacing="1.5">OCÉAN ATLANTIQUE</text>
+        <!-- rayons -->
+        <g fill="none" stroke="#C86F3E" stroke-opacity=".22" stroke-dasharray="3 5">
+          <circle cx="212" cy="240" r="62"/>
+          <circle cx="212" cy="240" r="118"/>
+          <circle cx="212" cy="240" r="172"/>
+        </g>
+        <text x="212" y="132" text-anchor="middle" fill="#C86F3E" fill-opacity=".55" font-family="DM Mono, monospace" font-size="7.5">20 KM</text>
+        <text x="212" y="186" text-anchor="middle" fill="#C86F3E" fill-opacity=".55" font-family="DM Mono, monospace" font-size="7.5">10 KM</text>
+        <!-- communes -->
+        <g font-family="DM Mono, monospace" font-size="8.5" fill="#EDEAE3" fill-opacity=".62">
+          <circle cx="176" cy="262" r="2.6" fill="#8B9296"/><text x="184" y="265">St-Vincent</text>
+          <circle cx="146" cy="278" r="2.6" fill="#8B9296"/><text x="154" y="281">Longeville</text>
+          <circle cx="246" cy="188" r="2.6" fill="#8B9296"/><text x="254" y="191">Avrillé</text>
+          <circle cx="168" cy="196" r="2.6" fill="#8B9296"/><text x="176" y="199">Le Bernard</text>
+          <circle cx="92" cy="300" r="2.6" fill="#8B9296"/><text x="100" y="303">La Tranche</text>
+          <circle cx="318" cy="216" r="2.6" fill="#8B9296"/><text x="326" y="219">Talmont</text>
+        </g>
+        <!-- base -->
+        <g>
+          <circle cx="212" cy="240" r="24" fill="none" stroke="#C86F3E" stroke-width="1.3" opacity=".55">
+            <animate attributeName="r" values="8;34;8" dur="3.4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".7;0;.7" dur="3.4s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="212" cy="240" r="6" fill="#C86F3E"/>
+          <text x="212" y="226" text-anchor="middle" fill="#EDEAE3" font-family="Bricolage Grotesque, sans-serif" font-size="12" font-weight="700">Jard-sur-Mer</text>
+        </g>
+        <g transform="translate(414,50)" opacity=".5">
+          <circle r="15" fill="none" stroke="#8B9296" stroke-width="1"/>
+          <path d="M0,-11 L3.5,2.5 L0,0 L-3.5,2.5 Z" fill="#C86F3E"/>
+          <text y="-19" text-anchor="middle" fill="#8B9296" font-family="DM Mono, monospace" font-size="7">N</text>
+        </g>
+      </svg>
+      <div class="mapfoot"><span>Rayon 20 km</span><span>Au-delà, sur devis</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALERIE ===== -->
+<section class="gal" aria-label="Réalisations">
+  <div class="gal-grid">
+    <figure class="gw rv"><img src="https://picsum.photos/seed/rouillard-g1/1200/700" alt="Salle de bain rénovée" loading="lazy" onerror="this.style.display='none'"><figcaption>Salle de bain — après rénovation</figcaption></figure>
+    <figure class="gt rv d1"><img src="https://picsum.photos/seed/rouillard-g2/700/1000" alt="Intervention en cours" loading="lazy" onerror="this.style.display='none'"><figcaption>Recherche de fuite</figcaption></figure>
+    <figure class="rv d2"><img src="https://picsum.photos/seed/rouillard-g3/700/700" alt="Outillage" loading="lazy" onerror="this.style.display='none'"><figcaption>Atelier</figcaption></figure>
+    <figure class="rv"><img src="https://picsum.photos/seed/rouillard-g4/700/700" alt="Tuyauterie cuivre" loading="lazy" onerror="this.style.display='none'"><figcaption>Réseau cuivre neuf</figcaption></figure>
+    <figure class="rv d1"><img src="https://picsum.photos/seed/rouillard-g5/700/700" alt="Chaudière" loading="lazy" onerror="this.style.display='none'"><figcaption>Entretien chaudière</figcaption></figure>
+    <figure class="gw rv d2"><img src="https://picsum.photos/seed/rouillard-g6/1200/700" alt="Douche à l'italienne" loading="lazy" onerror="this.style.display='none'"><figcaption>Douche à l'italienne — Saint-Vincent</figcaption></figure>
+    <figure class="rv"><img src="https://picsum.photos/seed/rouillard-g7/700/700" alt="Outils" loading="lazy" onerror="this.style.display='none'"><figcaption>Matériel embarqué</figcaption></figure>
+    <figure class="rv d1"><img src="https://picsum.photos/seed/rouillard-g8/700/700" alt="Intérieur rénové" loading="lazy" onerror="this.style.display='none'"><figcaption>Remise en eau — résidence secondaire</figcaption></figure>
+  </div>
+</section>
+
+<!-- ===== AVIS ===== -->
+<section class="avis" id="avis">
+  <p class="kicker">Exemples d'avis</p>
+  <h2>Ce que pourraient dire vos clients</h2>
+  <div class="avis-grid">
+    <article class="avis-card rv">
+      <span class="ctx">Fuite sous évier · un dimanche</span>
+      <blockquote>« Appelé un dimanche matin, il est passé dans l'après-midi. Il a pris le temps de m'expliquer d'où venait la fuite au lieu de juste changer la pièce. Facture conforme au devis annoncé au téléphone. »</blockquote>
+      <div class="avis-who"><span class="av">JP</span><div><p>Jean-Pierre</p><small>Jard-sur-Mer</small></div></div>
+    </article>
+    <article class="avis-card rv d1">
+      <span class="ctx">Remise en eau · résidence secondaire</span>
+      <blockquote>« Nous habitons Paris et la maison reste fermée l'hiver. Il s'occupe de la mise hors gel et de la remise en eau avant notre arrivée. On reçoit une photo du compteur à chaque passage. »</blockquote>
+      <div class="avis-who"><span class="av">CL</span><div><p>Claire L.</p><small>Saint-Vincent-sur-Jard</small></div></div>
+    </article>
+    <article class="avis-card rv d2">
+      <span class="ctx">Remplacement de chaudière</span>
+      <blockquote>« Devis clair, deux jours de chantier, tout était nettoyé le soir. Il a proposé un modèle moins cher que celui que j'envisageais parce qu'il suffisait pour la surface. »</blockquote>
+      <div class="avis-who"><span class="av">MD</span><div><p>Michel D.</p><small>Longeville-sur-Mer</small></div></div>
+    </article>
+  </div>
+</section>
+
+<!-- ===== GARANTIES ===== -->
+<section class="gar">
+  <div class="gar-i rv"><b>Assurance décennale</b><span>attestation fournie sur demande</span></div>
+  <div class="gar-i rv d1"><b>Qualification RGE</b><span>éligible aux aides à la rénovation</span></div>
+  <div class="gar-i rv d2"><b>Garantie 2 ans</b><span>pièces et main d'œuvre</span></div>
+  <div class="gar-i rv d3"><b>Artisan indépendant</b><span>SIRET 000 000 000 00000</span></div>
+</section>
+
+<!-- ===== BAND ===== -->
+<section class="band">
+  <div class="rv">
+    <h2>Un problème maintenant&nbsp;?</h2>
+    <p>Appelez, décrivez, envoyez une photo. Je vous dis tout de suite si ça peut attendre ou non.</p>
+  </div>
+  <a href="tel:+33251000001" class="btn btn-dark rv d1">02 51 00 00 01</a>
+</section>
+
+<footer>
+  <span>Rouillard Plomberie &amp; Chauffage — Jard-sur-Mer (85520)</span>
+  <span>02 51 00 00 01 · contact@exemple.fr</span>
+  <span>Exemple de réalisation</span>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var onScroll=function(){nav.classList.toggle('stuck',window.scrollY>70);};
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items=document.querySelectorAll('.rv');
+  if(reduce||!('IntersectionObserver' in window)){items.forEach(function(el){el.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  items.forEach(function(el){el.classList.add('rv-pre');io.observe(el);});
+})();
+</script>
+</body>
+</html>
